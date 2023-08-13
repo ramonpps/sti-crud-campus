@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Campis</h1>
+
+<div id="campis">
+  <% @campis.each do |campi| %>
+    <%= render campi %>
+    <p>
+      <%= link_to "Show this campi", campi %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New campi", new_campi_path %>

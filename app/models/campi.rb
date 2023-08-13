@@ -1,0 +1,2 @@
+class Campi < ApplicationRecord
+end
