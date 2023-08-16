@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :caronas do
     resources :paradas, only: [:create]
+    delete 'paradas', to: 'paradas#destroy_all', on: :member
   end
   get 'caronas/:id/delete', to: 'caronas#destroy', as: 'delete_carona'
   

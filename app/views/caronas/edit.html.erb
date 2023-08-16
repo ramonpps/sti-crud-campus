@@ -19,5 +19,9 @@
   </div>
 <% end %>
 
+<%= form_for(@carona, url: carona_paradas_path(@carona), method: :delete, data: { confirm: 'Tem certeza?' }) do |f| %>
+  <%= f.submit 'Excluir Todas as Paradas', class: 'btn btn-danger' %>
+<% end %>
+
 <%= link_to 'Visualizar', @carona %> |
 <%= link_to 'Voltar para Listagem', caronas_path %>
