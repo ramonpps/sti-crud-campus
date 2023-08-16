@@ -1,0 +1,45 @@
+<%= form_with(model: carona, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :local_partida %>
+    <%= form.text_field :local_partida %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destino %>
+    <%= form.text_field :destino %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dia %>
+    <%= form.date_field :dia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora %>
+    <%= form.time_field :hora %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantidade_passageiros %>
+    <%= form.number_field :quantidade_passageiros %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valor_custo %>
+    <%= form.text_field :valor_custo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :observacao %>
+    <%= form.text_area :observacao %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

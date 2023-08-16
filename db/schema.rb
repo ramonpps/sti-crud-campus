@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_001124) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_221656) do
   create_table "campis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "Name"
     t.string "Address"
@@ -23,4 +23,39 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_001124) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "caronas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nome"
+    t.string "local_partida"
+    t.string "destino"
+    t.date "dia"
+    t.time "hora"
+    t.integer "quantidade_passageiros"
+    t.decimal "valor_custo", precision: 10
+    t.text "observacao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lifts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "nome_condutore"
+    t.string "inicio"
+    t.string "fim"
+    t.datetime "quando"
+    t.integer "passageiros"
+    t.float "valor"
+    t.text "observacao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "paradas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "local"
+    t.bigint "carona_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "data_hora"
+    t.index ["carona_id"], name: "index_paradas_on_carona_id"
+  end
+
+  add_foreign_key "paradas", "caronas"
 end

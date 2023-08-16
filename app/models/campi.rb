@@ -1,2 +1,0 @@
-class Campi < ApplicationRecord
-end

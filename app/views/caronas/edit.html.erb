@@ -1,0 +1,23 @@
+<h1>Editando Carona</h1>
+
+<%= render 'form', carona: @carona %>
+
+<h2>Adicionar Parada</h2>
+<%= form_for([@carona, Parada.new]) do |f| %>
+  <div class="field">
+    <%= f.label :local %>
+    <%= f.text_field :local %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :data_hora %>
+    <%= f.datetime_local_field :data_hora %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit 'Adicionar Parada', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Visualizar', @carona %> |
+<%= link_to 'Voltar para Listagem', caronas_path %>
