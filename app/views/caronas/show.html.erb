@@ -1,23 +1,30 @@
-<h1>Detalhes da Carona</h1>
+<%= stylesheet_link_tag "bootstrap.css" %>
+<%=render "cabecalho" %>
+<div class="container">
+  <h1>Detalhes da Carona</h1>
 
-<p><strong>Nome:</strong> <%= @carona.nome %></p>
-<p><strong>Local de Partida:</strong> <%= @carona.local_partida %></p>
-<p><strong>Destino:</strong> <%= @carona.destino %></p>
-<p><strong>Dia:</strong> <%= @carona.dia.strftime('%d/%m/%Y') %></p>
-<p><strong>Hora:</strong> <%= @carona.hora.strftime('%H:%M') %></p>
-<p><strong>Quantidade de Passageiros:</strong> <%= @carona.quantidade_passageiros %></p>
-<p><strong>Valor Custo:</strong> <%= number_to_currency(@carona.valor_custo) %></p>
-<p><strong>Observação:</strong> <%= @carona.observacao %></p>
+  <p><strong>Nome:</strong> <%= @carona.nome %></p>
+  <p><strong>Local de Partida:</strong> <%= @carona.local_partida %></p>
+  <p><strong>Destino:</strong> <%= @carona.destino %></p>
+  <p><strong>Dia:</strong> <%= @carona.dia.strftime('%d/%m/%Y') %></p>
+  <p><strong>Hora:</strong> <%= @carona.hora.strftime('%H:%M') %></p>
+  <p><strong>Quantidade de Passageiros:</strong> <%= @carona.quantidade_passageiros %></p>
+  <p><strong>Valor Custo:</strong> <%= number_to_currency(@carona.valor_custo) %></p>
+  <p><strong>Observação:</strong> <%= @carona.observacao %></p>
 
-<h2>Paradas</h2>
-<ul>
-  <% @paradas.each do |parada| %>
-    <li>
-      <strong>Local:</strong> <%= parada.local %> - <strong>Data/Hora:</strong> <%= parada.data_hora.strftime('%d/%m/%Y %H:%M') %>
-    </li>
-  <% end %>
-</ul>
+  <h2>Paradas</h2>
+  <ul>
+    <% @paradas.each do |parada| %>
+      <li>
+        <strong>Local:</strong> <%= parada.local %> - <strong>Data/Hora:</strong> <%= parada.data_hora.strftime('%d/%m/%Y %H:%M') %>
+      </li>
+    <% end %>
+  </ul>
 
-<%= link_to 'Editar', edit_carona_path(@carona) %> |
-<%= link_to 'Excluir', delete_carona_path, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %> |
-<%= link_to 'Voltar para Listagem', caronas_path %>
+  <div class="text-center mt-3">
+    <%= link_to 'Editar', edit_carona_path(@carona), class: 'btn btn-primary' %> |
+    <%= link_to 'Excluir', delete_carona_path, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %> |
+    <%= link_to 'Voltar para Listagem', caronas_path, class: 'btn btn-success' %>
+  </div>
+</div>
+<%=render "rodape" %>

@@ -1,27 +1,33 @@
-<h1>Editando Carona</h1>
+<%= stylesheet_link_tag "bootstrap.css" %>
+<%=render "cabecalho" %>
+<div class="container">
+  <h1>Editando Carona</h1>
+  <%= render 'form', carona: @carona %>
 
-<%= render 'form', carona: @carona %>
+  <h2>Adicionar Parada</h2>
+  <%= form_for([@carona, Parada.new]) do |f| %>
+    <div class="form-group">
+      <%= f.label :local %>
+      <%= f.text_field :local, class: 'form-control' %>
+    </div>
 
-<h2>Adicionar Parada</h2>
-<%= form_for([@carona, Parada.new]) do |f| %>
-  <div class="field">
-    <%= f.label :local %>
-    <%= f.text_field :local %>
+    <div class="form-group">
+      <%= f.label :data_hora %>
+      <%= f.datetime_local_field :data_hora, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit 'Adicionar Parada', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= form_for(@carona, url: carona_paradas_path(@carona), method: :delete, data: { confirm: 'Tem certeza?' }) do |f| %>
+    <%= f.submit 'Excluir Todas as Paradas', class: 'btn btn-danger' %>
+  <% end %>
+
+  <div>
+    <%= link_to 'Visualizar', @carona %> |
+    <%= link_to 'Voltar para Listagem', caronas_path %>
   </div>
-  
-  <div class="field">
-    <%= f.label :data_hora %>
-    <%= f.datetime_local_field :data_hora %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit 'Adicionar Parada', class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%= form_for(@carona, url: carona_paradas_path(@carona), method: :delete, data: { confirm: 'Tem certeza?' }) do |f| %>
-  <%= f.submit 'Excluir Todas as Paradas', class: 'btn btn-danger' %>
-<% end %>
-
-<%= link_to 'Visualizar', @carona %> |
-<%= link_to 'Voltar para Listagem', caronas_path %>
+</div>
+<%=render "rodape" %>

@@ -1,31 +1,38 @@
-<h1>Listagem de Caronas</h1>
+<%= stylesheet_link_tag "bootstrap.css" %>
+<%=render "cabecalho" %>
+<div class="container">
+  <h1>Listagem de Caronas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Local de Partida</th>
-      <th>Destino</th>
-      <th>Dia</th>
-      <th>Hora</th>
-      <th>Opções</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @caronas.each do |carona| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= carona.nome %></td>
-        <td><%= carona.local_partida %></td>
-        <td><%= carona.destino %></td>
-        <td><%= carona.dia.strftime('%d/%m/%Y') %></td>
-        <td><%= carona.hora.strftime('%H:%M') %></td>
-        <td>
-          <%= link_to 'Ver Detalhes', carona %>
-        </td>
+        <th>Nome</th>
+        <th>Local de Partida</th>
+        <th>Destino</th>
+        <th>Dia</th>
+        <th>Hora</th>
+        <th>Opções</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @caronas.each do |carona| %>
+        <tr>
+          <td><%= carona.nome %></td>
+          <td><%= carona.local_partida %></td>
+          <td><%= carona.destino %></td>
+          <td><%= carona.dia.strftime('%d/%m/%Y') %></td>
+          <td><%= carona.hora.strftime('%H:%M') %></td>
+          <td>
+            <%= link_to 'Ver Detalhes', carona, class: 'btn btn-link' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'Nova Carona', new_carona_path %>
-<%= link_to "Voltar para Campus", campus_path%>
+  <div class="text-center mt-3">
+    <%= link_to 'Nova Carona', new_carona_path, class: 'btn btn-primary' %>
+    <%= link_to "Voltar para Campus", campus_path, class: 'btn btn-success' %>
+  </div>
+</div>
+<%=render "rodape" %>

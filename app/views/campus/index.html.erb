@@ -1,15 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<%= stylesheet_link_tag "bootstrap.css" %>
+<%=render "cabecalho" %>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Campus</h1>
+  <h1>Campus</h1>
 
-<div id="campus">
-  <% @campus.each do |campu| %>
-    <%= render campu %>
-    <p>
-      <%= link_to "Show this campu", campu %>
-    </p>
-  <% end %>
+  <div id="campus">
+    <% @campus.each do |campu| %>
+      <%= render campu %>
+      <p>
+        <%= link_to "Show this campu", campu, class: 'btn btn-link' %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="text-center mt-3">
+    <%= link_to "New campu", new_campu_path, class: 'btn btn-primary' %>
+    <%= link_to "Ir para Caronas", caronas_path, class: 'btn btn-link' %>
+  </div>
 </div>
-
-<%= link_to "New campu", new_campu_path %>
-<%= link_to "Ir para Caronas", caronas_path %>
+<%=render "rodape" %>
