@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :campus
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
     delete 'paradas', to: 'paradas#destroy_all', on: :member
   end
   get 'caronas/:id/delete', to: 'caronas#destroy', as: 'delete_carona'
-  
+  root 'campus#index'
 end
