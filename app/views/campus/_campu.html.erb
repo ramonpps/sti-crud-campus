@@ -1,37 +1,65 @@
-<div id="<%= dom_id campu %>">
+<div id="<%= dom_id(campu) %>">
   <p>
-    <strong>Descrição:</strong>
-    <%= campu.Descrição %>
+    <strong>Nome:</strong>
+    <% if campu.Descrição.blank? %>
+      Nome indisponível
+    <% else %>
+      <%= campu.Descrição %>
+    <% end %>
   </p>
 
   <p>
     <strong>Endereço:</strong>
-    <%= campu.Endereço %>
+    <% if campu.Endereço.blank? %>
+      Endereço indisponível
+    <% else %>
+      <%= campu.Endereço %>
+    <% end %>
   </p>
 
   <p>
     <strong>Número:</strong>
-    <%= campu.Número %>
+    <% if campu.Número.blank? %>
+      Número indisponível
+    <% else %>
+      <%= campu.Número %>
+    <% end %>
   </p>
 
   <p>
     <strong>Bairro:</strong>
-    <%= campu.Bairro %>
+    <% if campu.Bairro.blank? %>
+      Bairro indisponível
+    <% else %>
+      <%= campu.Bairro %>
+    <% end %>
   </p>
 
   <p>
     <strong>Cidade:</strong>
-    <%= campu.Cidade %>
+    <% if campu.Cidade.blank? %>
+      Cidade indisponível
+    <% else %>
+      <%= campu.Cidade %>
+    <% end %>
   </p>
 
   <p>
     <strong>Cep:</strong>
-    <%= campu.CEP %>
+    <% if campu.CEP.nil? %>
+      CEP indisponível
+    <% else %>
+      <%= campu.CEP %>
+    <% end %>
   </p>
 
   <p>
     <strong>Desativação:</strong>
-    <%= campu.Desativação %>
+    <% if campu.Desativação.nil? %>
+      Ativo
+    <% else %>
+      <%= campu.Desativação %>
+    <% end %>
   </p>
-
 </div>
+

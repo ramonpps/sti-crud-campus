@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "bootstrap.css" %>
-<%=render "cabecalho" %>
-<div class="container">
+<%= render "cabecalho" %>
+<div class="container p-3">
   <h1>Listagem de Caronas</h1>
 
   <table>
@@ -17,11 +17,11 @@
     <tbody>
       <% @caronas.each do |carona| %>
         <tr>
-          <td><%= carona.nome %></td>
-          <td><%= carona.local_partida %></td>
-          <td><%= carona.destino %></td>
-          <td><%= carona.dia.strftime('%d/%m/%Y') %></td>
-          <td><%= carona.hora.strftime('%H:%M') %></td>
+          <td><%= carona.nome.blank? ? 'Sem nome' : carona.nome %></td>
+          <td><%= carona.local_partida.blank? ? 'Sem partida' : carona.local_partida %></td>
+          <td><%= carona.destino.blank? ? 'Sem destino' : carona.destino %></td>
+          <td><%= carona.dia.present? ? carona.dia.strftime('%d/%m/%Y') : 'Sem dia' %></td>
+          <td><%= carona.hora.present? ? carona.hora.strftime('%H:%M') : 'Sem hora' %></td>
           <td>
             <%= link_to 'Ver Detalhes', carona, class: 'btn btn-link' %>
           </td>
@@ -35,4 +35,7 @@
     <%= link_to "Voltar para Campus", campus_path, class: 'btn btn-success' %>
   </div>
 </div>
-<%=render "rodape" %>
+<%= render "rodape" %>
+
+
+

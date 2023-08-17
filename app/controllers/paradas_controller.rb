@@ -10,7 +10,7 @@ class ParadasController < ApplicationController
 
   def destroy_all
     @carona.paradas.destroy_all
-    redirect_to edit_carona_path(@carona), notice: 'Todas as paradas foram excluídas com sucesso.'
+    redirect_to edit_carona_path(@carona)
   end
 
   private

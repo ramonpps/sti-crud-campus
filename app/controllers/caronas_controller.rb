@@ -17,7 +17,7 @@ class CaronasController < ApplicationController
     def create
       @carona = Carona.new(carona_params)
       if @carona.save
-        redirect_to @carona, notice: 'Carona criada com sucesso.'
+        redirect_to @carona
       else
         render :new
       end
@@ -28,7 +28,7 @@ class CaronasController < ApplicationController
   
     def update
       if @carona.update(carona_params)
-        redirect_to @carona, notice: 'Carona atualizada com sucesso.'
+        redirect_to @carona
       else
         render :edit
       end
@@ -36,7 +36,7 @@ class CaronasController < ApplicationController
   
     def destroy
         @carona.destroy
-        redirect_to caronas_url, notice: 'Carona excluída com sucesso.'
+        redirect_to caronas_url
       end
       
   

@@ -1,25 +1,19 @@
 class CampusController < ApplicationController
   before_action :set_campu, only: %i[ show edit update destroy ]
-
-  # GET /campus or /campus.json
   def index
     @campus = Campu.all
   end
 
-  # GET /campus/1 or /campus/1.json
   def show
   end
 
-  # GET /campus/new
   def new
     @campu = Campu.new
   end
-
-  # GET /campus/1/edit
+  
   def edit
   end
 
-  # POST /campus or /campus.json
   def create
     @campu = Campu.new(campu_params)
 
@@ -34,7 +28,6 @@ class CampusController < ApplicationController
     end
   end
 
-  # PATCH/PUT /campus/1 or /campus/1.json
   def update
     respond_to do |format|
       if @campu.update(campu_params)
@@ -47,7 +40,6 @@ class CampusController < ApplicationController
     end
   end
 
-  # DELETE /campus/1 or /campus/1.json
   def destroy
     @campu.destroy
 
@@ -58,12 +50,10 @@ class CampusController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_campu
       @campu = Campu.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def campu_params
       params.require(:campu).permit(:Descrição, :Endereço, :Número, :Bairro, :Cidade, :CEP, :Desativação)
     end
