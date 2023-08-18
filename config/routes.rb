@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :caronas do
-    resources :paradas, only: [:create]
+    resources :paradas, only: [:create, :destroy]
     delete 'paradas', to: 'paradas#destroy_all', on: :member
   end
   get 'caronas/:id/delete', to: 'caronas#destroy', as: 'delete_carona'
+  post '/subscribe', to: 'newsletter_subscriptions#create', as: :subscribe
   root 'campus#index'
 end

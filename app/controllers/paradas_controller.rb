@@ -8,6 +8,13 @@ class ParadasController < ApplicationController
     end
   end
 
+  def destroy
+    @carona = Carona.find(params[:carona_id])
+    @parada = @carona.paradas.find(params[:id])
+    @parada.destroy
+    redirect_to carona_path(@carona)
+  end
+
   def destroy_all
     @carona.paradas.destroy_all
     redirect_to edit_carona_path(@carona)

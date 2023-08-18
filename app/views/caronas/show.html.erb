@@ -78,6 +78,7 @@
           <% else %>
             Data/hora indisponível
           <% end %>
+         <%= button_to 'Remover', carona_parada_path(@carona, parada), method: :delete, class: 'btn btn-danger' %>
         </li>
       <% end %>
     <% end %>

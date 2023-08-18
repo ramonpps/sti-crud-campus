@@ -1,7 +1,9 @@
 <div class="d-flex justify-content-center align-items-center bg-danger p-3 mt-personalizado1" style="max-height: 200px; overflow: hidden;">
     <div class="p-4 text-center" style="max-height: 200px; overflow: hidden;">
         <p><strong style="color: white;">Cadastre seu email para receber novidades do sistema</strong></p>
-        <input type="email" class="form-control" placeholder="Insira seu e-mail">
-        <button class="btn btn-light mt-3">Assinar</button>
+        <%= form_tag(subscribe_path, method: :post) do %>
+          <%= email_field_tag :email, nil, class: 'form-control', placeholder: 'Insira seu e-mail' %>
+          <%= submit_tag 'Assinar', class: 'btn btn-light mt-3' %>
+        <% end %>
     </div>
 </div>
