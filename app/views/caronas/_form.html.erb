@@ -1,20 +1,20 @@
 <%= form_with(model: carona, local: true) do |form| %>
   <div class="field">
     <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <%= form.text_field :nome, placeholder: "Nome do Condutor" %>
   </div>
 
   <div class="field">
     <%= form.label :local_partida, style: "display: inline-block; width: 150px;" %>
     <div class="input-container local-input" style="display: inline-block;">
-      <%= form.collection_select :local_partida, Campu.where(Desativação: nil), :Descrição, :Descrição, { include_blank: true, class: "dropdown-input" } %>
+      <%= form.collection_select :local_partida, Campu.where(Desativação: nil), :Descrição, :Descrição, { include_blank: "Selecione um Campus ativo", class: "dropdown-input" } %>
     </div>
   </div>
 
   <div class="field">
     <%= form.label :destino, style: "display: inline-block; width: 150px;" %>
     <div class="input-container destino-input" style="display: inline-block;">
-      <%= form.collection_select :destino, Campu.where(Desativação: nil), :Descrição, :Descrição, { include_blank: true, class: "dropdown-input" } %>
+      <%= form.collection_select :destino, Campu.where(Desativação: nil), :Descrição, :Descrição, { include_blank: "Selecione um Campus ativo", class: "dropdown-input" } %>
     </div>
   </div>
 
@@ -31,17 +31,17 @@
 
   <div class="field">
     <%= form.label :quantidade_passageiros %>
-    <%= form.number_field :quantidade_passageiros %>
+    <%= form.number_field :quantidade_passageiros, placeholder: "0" %>
   </div>
 
   <div class="field">
     <%= form.label :valor_custo %>
-    <%= form.text_field :valor_custo %>
+    <%= form.number_field :valor_custo, placeholder: "10" %>
   </div>
 
   <div class="field">
     <%= form.label :observacao %>
-    <%= form.text_area :observacao %>
+    <%= form.text_area :observacao, placeholder: "Deixe uma mensagem para os passageiros" %>
   </div>
 
   <div class="actions">
