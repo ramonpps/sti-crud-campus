@@ -23,6 +23,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_021830) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "campus", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "Descrição"
+    t.string "Endereço"
+    t.integer "Número"
+    t.string "Bairro"
+    t.string "Cidade"
+    t.string "CEP"
+    t.date "Desativação"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "caronas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nome"
     t.string "local_partida"
