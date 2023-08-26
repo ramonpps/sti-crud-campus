@@ -5,14 +5,19 @@
   </div>
 
   <div class="field">
-    <%= form.label :local_partida %>
-    <%= form.text_field :local_partida %>
+    <%= form.label :local_partida, style: "display: inline-block; width: 150px;" %>
+    <div class="input-container local-input" style="display: inline-block;">
+      <%= form.collection_select :local_partida, Campu.where(Desativação: nil), :Descrição, :Descrição, { include_blank: true, class: "dropdown-input" } %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :destino %>
-    <%= form.text_field :destino %>
+    <%= form.label :destino, style: "display: inline-block; width: 150px;" %>
+    <div class="input-container destino-input" style="display: inline-block;">
+      <%= form.collection_select :destino, Campu.where(Desativação: nil), :Descrição, :Descrição, { include_blank: true, class: "dropdown-input" } %>
+    </div>
   </div>
+
 
   <div class="field">
     <%= form.label :dia %>
@@ -43,3 +48,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+
+
