@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>IDUff</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= favicon_link_tag asset_path('favicon.png'), rel: 'icon', type: 'image/png', sizes: '512x512', style: 'width: 64px; height: 64px;' %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<head>
+  <title>IDUff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= favicon_link_tag asset_path('favicon.png'), rel: 'icon', type: 'image/png', sizes: '512x512', style: 'width: 64px; height: 64px;' %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body class="bg-custom"> 
-    <center>
+<body class="bg-custom">
+  <center>
+    <% if flash[:notice].present? %>
+      <div class="flash-notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert].present? %>
+      <div class="flash-alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <%= yield %>
-    </center>
-  </body>
+  </center>
+</body>
 </html>
+

@@ -4,6 +4,10 @@ class ParadasController < ApplicationController
   def create
     @parada = @carona.paradas.build(parada_params)
     if @parada.save
+      
+      redirect_to edit_carona_path(@carona)
+    else
+      flash[:error] = "Failed to add parada."
       redirect_to edit_carona_path(@carona)
     end
   end
@@ -30,3 +34,4 @@ class ParadasController < ApplicationController
     params.require(:parada).permit(:local, :data_hora)
   end
 end
+

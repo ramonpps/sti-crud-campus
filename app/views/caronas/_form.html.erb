@@ -1,4 +1,16 @@
-<%= form_with(model: carona, local: true) do |form| %>
+<%= form_with(model: carona) do |form| %>
+  <% if carona.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(carona.errors.count, "erro") %>:</h2>
+
+      <ul>
+        <% carona.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label :nome %>
     <%= form.text_field :nome, placeholder: "Nome do Condutor" %>
