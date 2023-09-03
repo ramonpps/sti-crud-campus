@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :paradas, only: [:create, :destroy]
     delete 'paradas', to: 'paradas#destroy_all', on: :member
   end
+  get 'caronas/:carona_id/paradas/new', to: 'paradas#new', as: 'new_carona_parada'
   get 'caronas/:id/delete', to: 'caronas#destroy', as: 'delete_carona'
   post '/subscribe', to: 'newsletter_subscriptions#create', as: :subscribe
   root 'campus#index'
+
 end

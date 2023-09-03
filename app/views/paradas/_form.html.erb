@@ -1,0 +1,27 @@
+<%= form_for([carona, Parada.new]) do |f| %>
+  <% if f.object.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(f.object.errors.count, "erro") %>:</h2>
+
+      <ul>
+        <% f.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :local %>
+    <%= f.text_field :local, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :data_hora %>
+    <%= f.datetime_local_field :data_hora, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Adicionar Parada', class: 'btn btn-primary' %>
+  </div>
+<% end %>

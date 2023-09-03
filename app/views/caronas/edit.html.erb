@@ -1,41 +1,29 @@
-<%= stylesheet_link_tag "bootstrap.css" %>
-<%=render "cabecalho" %>
-<div class="container">
-  <h1>Editando Carona</h1>
-  <%= render 'form', carona: @carona %>
-
-  <h2>Adicionar Parada</h2>
-  <%= form_for([@carona, Parada.new]) do |f| %>
-    <% if f.object.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(f.object.errors.count, "erro") %>:</h2>
-
-        <ul>
-          <% f.object.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :local %>
-      <%= f.text_field :local, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :data_hora %>
-      <%= f.datetime_local_field :data_hora, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit 'Adicionar Parada', class: 'btn btn-primary' %>
+<%= form_for([@carona, Parada.new]) do |f| %>
+  <% if f.object.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(f.object.errors.count, "erro") %>:</h2>
+      <ul>
+        <% f.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= link_to 'Visualizar', @carona %> |
-    <%= link_to 'Voltar para Listagem', caronas_path %>
+  <!-- Campos do formulário para criar uma nova parada -->
+  <div class="form-group">
+    <%= f.label :local %>
+    <%= f.text_field :local, class: 'form-control' %>
   </div>
-</div>
-<%=render "rodape" %>
+
+  <div class="form-group">
+    <%= f.label :data_hora %>
+    <%= f.datetime_local_field :data_hora, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Adicionar Parada', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+

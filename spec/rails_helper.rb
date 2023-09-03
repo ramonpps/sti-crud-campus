@@ -7,6 +7,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'support/factories.rb'
+require 'capybara/rspec'
+require_relative '../config/application'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -62,3 +64,31 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Capybara.register_driver :selenium do |app|
+  options = ::Selenium::WebDriver::Chrome::Options.new
+
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-gpu')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument("--remote-debugging-port=9222")
+  options.add_argument('--window-size=1366,720')
+  options.add_option(:binary, '/snap/bin/chromium')
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+# Use :selenium driver for JavaScript tests
+Capybara.javascript_driver = :selenium
+
+Capybara.configure do |config|
+  # Set the default driver to :selenium
+  config.default_driver = :selenium
+  config.default_max_wait_time = 20
+  config.app_host = 'http://127.0.0.1:3000/'
+  config.server_host = '127.0.0.1'
+  config.server_port = 3000
+end
+
+
+

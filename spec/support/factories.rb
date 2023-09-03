@@ -66,6 +66,17 @@ FactoryBot.define do
         observacao { 'Alguma observação' }
     end
 
+    factory :carona do
+      nome { 'Nome do Condutor' }
+      local_partida { 'Local de partida' }
+      destino { 'Destino' }
+      dia { Date.today }
+      hora { Time.now }
+      quantidade_passageiros { 4 }
+      valor_custo { 50 }
+      observacao { 'Alguma observação' }
+    end
+
     factory :parada do
         local { 'Local de Parada' }
         data_hora { Time.now }
